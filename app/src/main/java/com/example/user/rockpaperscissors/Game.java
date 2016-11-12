@@ -12,7 +12,7 @@ public class Game {
     private String move;
     protected ArrayList<String> mComputerMove;
 
-    public Game(){
+    public Game() {
         mComputerMove = new ArrayList<String>();
         setUpComputerMoves();
     }
@@ -42,8 +42,7 @@ public class Game {
 
     public String computerMove() {
         Random rand = new Random();
-        int arraylength = mComputerMove.size();
-        int randomIndex = rand.nextInt(arraylength);
+        int randomIndex = rand.nextInt(3);
         String randomMove = mComputerMove.get(randomIndex);
 
         return randomMove;
@@ -54,33 +53,70 @@ public class Game {
     public String playGame(String move) {
         setMove(move);
         String turn = this.computerMove();
-        if (this.move == "Rock" && turn == "Scissors") {
-            return "YOU WIN!";
-        }
-        if (this.move == "Rock" && turn == "Rock") {
+        if (move.equals(turn) )
+        {
             return "DRAW!";
         }
-        if (this.move == "Rock" && turn == "Paper") {
-            return "LOSER!";
+
+        switch (move) {
+            case "Rock":
+                return winChecker("Rock", turn);
+            //break;
+            case "Scissors":
+                return winChecker("Scissors", turn);
+            //break;
+            case "Paper":
+                return winChecker("Paper", turn);
+            //break;
+            //return "LOSER!";
+            //break;
+            default:
+                return "What are you doing, stop breaking our game!";
         }
-        if (this.move == "Scissors" && turn == "Paper") {
+    }
+
+
+    public String winChecker(String playerMove, String computerMove) {
+        if (playerMove == "Rock" && computerMove == "Scissors" ||
+                playerMove == "Paper" && computerMove == "Rock" ||
+                playerMove == "Scissors" && computerMove == "Paper") {
             return "YOU WIN!";
         }
-        if (this.move == "Scissors" && turn == "Scissors") {
-            return "DRAW!";
-        }
-        if (this.move == "Scissors" && turn == "Rock") {
+        else {
             return "LOSER!";
+
         }
-        if (this.move == "Paper" && turn == "Rock") {
-            return "YOU WIN!";
-        }
-        if (this.move == "Paper" && turn == "Paper") {
-            return "DRAW!";
-        }
-        if (this.move == "Paper" && turn == "Scissors") {
-            return "LOSER!";
-        }
-        else return "What are you doing, stop breaking our game!";
     }
 }
+
+
+//        if (this.move == "Rock" && turn == "Scissors") {
+//            return "YOU WIN!";
+//        }
+//        if (this.move == "Rock" && turn == "Rock") {
+//            return "DRAW!";
+//        }
+//        if (this.move == "Rock" && turn == "Paper") {
+//            return "LOSER!";
+//        }
+//        if (this.move == "Scissors" && turn == "Paper") {
+//            return "YOU WIN!";
+//        }
+//        if (this.move == "Scissors" && turn == "Scissors") {
+//            return "DRAW!";
+//        }
+//        if (this.move == "Scissors" && turn == "Rock") {
+//            return "LOSER!";
+//        }
+//        if (this.move == "Paper" && turn == "Rock") {
+//            return "YOU WIN!";
+//        }
+//        if (this.move == "Paper" && turn == "Paper") {
+//            return "DRAW!";
+//        }
+//        if (this.move == "Paper" && turn == "Scissors") {
+//            return "LOSER!";
+//        }
+//        else return "What are you doing, stop breaking our game!";
+//    }
+//}

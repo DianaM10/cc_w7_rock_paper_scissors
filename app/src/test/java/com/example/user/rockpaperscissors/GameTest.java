@@ -24,13 +24,13 @@ public class GameTest {
         TestMoves.add("Rock");
         TestMoves.add("Paper");
         TestMoves.add("Scissors");
-//        game = new Game("Rock");
+
 
     }
 
     @Test
     public void canGetMove() {
-        Game game = new Game("Rock");
+        Game game = new Game();
         assertEquals("Rock", game.getMove());
     }
 
@@ -41,7 +41,7 @@ public class GameTest {
 
     @Test
     public void gameBeingPlayed(){
-        Game game = new Game ("Rock");
+        Game game = new Game ();
         assertEquals("YOU WIN!", game.playGame("Rock"));
     }
 }
